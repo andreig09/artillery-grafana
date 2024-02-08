@@ -1,0 +1,16 @@
+config:
+  target: 'https://opencart.abstracta.us/'
+  plugins:
+    publish-metrics:
+      - type: prometheus
+        pushgateway: "http://localhost:9091"
+        tags:
+          - "testId:testMasLargo"
+          - "type:loadtest"
+  phases:
+    - duration: 180
+      arrivalRate: 1
+scenarios:
+  - flow:
+      - get:
+          url: "/"
